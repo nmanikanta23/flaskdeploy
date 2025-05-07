@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .cart-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .cart-container h2 {
+            text-align: center;
+        }
+        .booking {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .booking .type {
+            font-weight: bold;
+            color: #007bff;
+        }
+        .booking .details {
+            margin-top: 5px;
+        }
+        .logout-button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+        }
+        .logout-button:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <div class="cart-container">
+        <h2>Your Cart</h2>
+        {% if bookings %}
+            {% for booking in bookings %}
+                <div class="booking">
+                    <div class="type">{{ booking.type }}</div>
+                    <div class="details">{{ booking.details }}</div>
+                    <div class="date">{{ booking.date.strftime('%Y-%m-%d %H:%M:%S') }}</div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No bookings found.</p>
+        {% endif %}
+    </div>
+    <a href="{{ url_for('logout') }}" class="logout-button">Logout</a>
+</body>
+</html>
