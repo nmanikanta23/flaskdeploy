@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .dashboard-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .dashboard-container h2 {
+            margin-bottom: 20px;
+        }
+        .dashboard-container button {
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .dashboard-container button:hover {
+            background-color: #0056b3;
+        }
+        .logout-button {
+            margin-top: 20px;
+            background-color: #dc3545;
+        }
+        .logout-button:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <h2>Welcome, {{ current_user.username }}!</h2>
+        <button onclick="window.location.href='{{ url_for('food') }}'">Food</button>
+        <button onclick="window.location.href='{{ url_for('travel') }}'">Travel</button>
+        <button onclick="window.location.href='{{ url_for('accommodation') }}'">Accommodation</button>
+        <button onclick="window.location.href='{{ url_for('budget') }}'">Budget Planning</button>
+        <button onclick="window.location.href='{{ url_for('cart') }}'">Cart</button>
+        <button class="logout-button" onclick="window.location.href='{{ url_for('logout') }}'">Logout</button>
+    </div>
+</body>
+</html>
